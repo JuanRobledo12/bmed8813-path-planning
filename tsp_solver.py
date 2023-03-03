@@ -9,10 +9,9 @@ import pandas as pd
 class Path_finder(object):
 
     #Initialize the class
-    def __init__(self, data_file, waypoints, node_list, nodes_to_vist):
+    def __init__(self, lost_object, waypoints, nodes_to_vist):
         self.location_array = waypoints
-        self.file_name = data_file
-        self.node_list = node_list
+        self.file_name = 'synthetic_data_' + lost_object + '.csv'
         self.nodes_to_visit =  nodes_to_vist
         self.w_l = 0.9
         self.w_d = 0.1
@@ -138,4 +137,4 @@ class Path_finder(object):
         # solution_plot = solution_visualization(solution_nodes)
         coor_path = self.generate_path_coor(self.location_array, solution[0])
         #print(coor_path)
-        return coor_path
+        return solution[0][1:len(coor_path)]
